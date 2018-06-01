@@ -71,8 +71,9 @@
             </div>
         </div>
     </div>
-    
-    <a href="/api/reservation">View Reservations</a>
+    <p>Control Panel</p>
+    <button id="clear" href="">Clear Reservation Table |</button>
+    <a href="/api/reservation" target="_blank">View Reservations</a>
 
     <script type="text/javascript">
         $(".submit").on("click", function () {
@@ -87,7 +88,6 @@
             $.post("/api/reserve", newReservation)
                 .then(function(data) {
                     console.log("reserve.html", data);
-                    alert("Adding reservation...");
             });
             $("#reserve_name").val("");
             $("#reserve_phone").val("");
@@ -95,6 +95,7 @@
             $("#reserve_uniqueID").val("");
             
         })
+
     </script>
 
 </body>

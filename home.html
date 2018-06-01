@@ -29,8 +29,16 @@
 
         </div>
     </div>
+    <p>Control Panel</p>
+    <button id="clear" href="">Clear Reservation Table | </button>
+    <a href="/api/reservation" target="_blank">View Reservations</a>
 
-
+    <script>
+    $("#clear").on("click", function(){
+        $.get("/api/clear", function(data){
+        })
+    })
+    </script>
 </body>
 
 </html>

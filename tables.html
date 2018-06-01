@@ -55,6 +55,9 @@
         </div>
 
     </div>
+    <p>Control Panel</p>
+    <button id="clear" href="">Clear Reservation Table | </button>
+    <a href="/api/reservation" target="_blank">View Reservations</a>
 
     <script type="text/javascript">
     $.get("/api/reservation", function(data) {
@@ -68,6 +71,13 @@
                 $("#waitlistSection").append("<p>" +data[i].name+ "</p>");
             }
         }
+    })
+
+    $("#clear").on("click", function(){
+        $.get("/api/clear", function(data){
+        })
+        $("#tableSection").empty();
+        $("#waitlistSection").empty();
     })
     </script>
 

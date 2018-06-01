@@ -35,6 +35,11 @@ app.get("/api/reservation", function(req, res) {
     
 })
 
+app.get("/api/clear", function(req, res){
+    tables = [];
+    
+})
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
