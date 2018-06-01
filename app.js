@@ -14,7 +14,7 @@ app.listen(PORT, function() {
 });
 
 var tables =[];
-var waitList=[];
+// var waitList=[];
 
 
 app.get("/", function(req, res) {
@@ -23,14 +23,28 @@ app.get("/", function(req, res) {
 
 app.get("/reserve", function (req, res){
     res.sendFile(path.join(__dirname, "reserve.html"));
+
 });
 
 app.get("/tables", function (req, res) {
     res.sendFile(path.join(__dirname, "tables.html"))
 });
 
-app.post("api/reservations", function(req, res) {
-    var newReservation = res.body; //this is the new reservation obj
+app.get("/api/reservation", function(req, res) {
+    res.json(tables);
     
+})
+
+// Sets up the Express app to handle data parsing
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post("/api/reserve", function(req, res) {
+    var newReservation = req.body; //this is the new reservation obj
+    console.log(newReservation);
+    newReservation.id = newReservation.id.replace(/\s+/g, "").toLowerCase();
+  
+    tables.push(newReservation);
+    res.json(tables);
 })
 
