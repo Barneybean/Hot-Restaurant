@@ -1,11 +1,11 @@
 //dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
-var path = ("path");
+var path = require("path");
 
 // set up express 
 var app = express();
-var port = 7000;
+var PORT = 7000;
 
 // Starts the server to begin listening
 // =============================================================
@@ -17,16 +17,20 @@ var tables =[];
 var waitList=[];
 
 
-app.get("/", function (req, res){
+app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, "home.html"));
+  });
+
+app.get("/reserve", function (req, res){
+    res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/makeReservation", function (req, res){
-    res.sendFile(path.join(__dirname, "reservation.html"));
+app.get("/tables", function (req, res) {
+    res.sendFile(path.join(__dirname, "tables.html"))
 });
 
-app.get("/viewTable", function (req, res) {
-    res.sendFile(path.join(__dirname, "table.html"))
-});
-
+app.post("api/reservations", function(req, res) {
+    var newReservation = res.body; //this is the new reservation obj
+    
+})
 
