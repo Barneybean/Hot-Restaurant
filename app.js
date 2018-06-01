@@ -5,7 +5,7 @@ var path = require("path");
 
 // set up express 
 var app = express();
-var PORT = 7000;
+var PORT = process.env.PORT || 7000;
 
 // Starts the server to begin listening
 // =============================================================
